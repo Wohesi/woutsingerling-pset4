@@ -23,10 +23,12 @@ public class todoDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
         sqLiteDatabase.execSQL("create table todos (_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, completed INTEGER);");
         sqLiteDatabase.execSQL("insert into todos(title, completed) values('testTitle1', 0)");
         sqLiteDatabase.execSQL("insert into todos(title, completed)values('testTitle2', 1)");
         sqLiteDatabase.execSQL("insert into todos(title, completed)values('testTitle3', 1)");
+
     }
 
     @Override

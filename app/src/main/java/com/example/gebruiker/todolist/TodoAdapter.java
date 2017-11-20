@@ -19,13 +19,14 @@ public class TodoAdapter extends ResourceCursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView name = view.findViewById(R.id.textView);
 
-        //String test = String.valueOf(cursor.getString(cursor.getColumnIndex("title")));
+        // Set text view to name
+        TextView name = view.findViewById(R.id.textView);
         name.setText(cursor.getString(cursor.getColumnIndex("title")));
 
+        // set checkbox to completed
         CheckBox complete = view.findViewById(R.id.checkBox);
-        complete.setChecked(cursor.getInt(cursor.getColumnIndex("completed")) == 1 );
+        complete.setChecked(cursor.getInt(cursor.getColumnIndex("completed")) == 0 );
     }
 }
 
