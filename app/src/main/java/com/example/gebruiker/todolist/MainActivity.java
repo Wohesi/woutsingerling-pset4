@@ -22,11 +22,17 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new TodoAdapter(getApplicationContext(), cursor));
+
     }
 
     public void addItem(View view) {
         button = (Button) findViewById(R.id.button);
+        todoDatabase.getInstance(getApplicationContext()).insert("title", 0);
     }
 
+//    private void updateData(View view) {
+//
+//        private TodoAdapter adapter;
+//    }
 
 }
