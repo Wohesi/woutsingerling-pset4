@@ -1,5 +1,6 @@
 package com.example.gebruiker.todolist;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
@@ -50,6 +51,18 @@ public class todoDatabase extends SQLiteOpenHelper {
 
     public Cursor selectAll() {
         return getWritableDatabase().rawQuery("SELECT * FROM todos", null);
+    }
+
+
+    public void insert(String title, int completed) {
+        // Get connection
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues cv = new ContentValues();
+
+        // put values
+        cv.put(title, completed);
+        db.insert("todos", "null", cv);
+
     }
 
 }
