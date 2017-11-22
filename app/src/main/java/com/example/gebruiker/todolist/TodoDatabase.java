@@ -3,23 +3,20 @@ package com.example.gebruiker.todolist;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.LayoutInflater;
-import android.widget.TableLayout;
 
 /**
  * Created by Wout on 20-11-2017.
  */
 
-public class todoDatabase extends SQLiteOpenHelper {
+public class TodoDatabase extends SQLiteOpenHelper {
 
-    private todoDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    private TodoDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    private static todoDatabase instance;
+    private static TodoDatabase instance;
 
 
     @Override
@@ -39,12 +36,12 @@ public class todoDatabase extends SQLiteOpenHelper {
 
     }
 
-    public static todoDatabase getInstance(Context context) {
+    public static TodoDatabase getInstance(Context context) {
 
         if (instance != null ) {
             return instance;
         } else {
-            instance = new todoDatabase(context, "name", null, 1);
+            instance = new TodoDatabase(context, "name", null, 1);
             return instance;
         }
     }
