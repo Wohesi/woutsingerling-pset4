@@ -62,7 +62,6 @@ public class todoDatabase extends SQLiteOpenHelper {
         // put values
         cv.put(title, completed);
         db.insert("todos", "null", cv);
-
     }
 
 }
