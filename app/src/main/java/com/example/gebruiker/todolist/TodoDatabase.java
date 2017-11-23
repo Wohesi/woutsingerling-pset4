@@ -65,12 +65,27 @@ public class TodoDatabase extends SQLiteOpenHelper {
     // Step 7
     //1.  accepts long id, updated scompleted status
 
-    public  void update(long id, int completed) {
+    public  void update(long id) {
         // 2. get reference to writable database
         SQLiteDatabase db = this.getReadableDatabase();
 
         // 3. Content values that contain a new value for completed.
         ContentValues contentValues = new ContentValues();
+
+        // new cursor
+        Cursor cursor = db.rawQuery("SELECT * FROM todos WHERE _id = "+ id, null);
+
+        if (cursor != null ) {
+            cursor.moveToFirst();
+        }
+
+        int completed = cursor.getInt(cursor.getColumnIndex("completed"));
+        if (completed == 1 ) {
+            completed = 0;
+        } else {
+            completed = 1;
+        }
+
         contentValues.put("completed", completed);
         db.update("todos", contentValues, "_id= "+ id, null);
     }

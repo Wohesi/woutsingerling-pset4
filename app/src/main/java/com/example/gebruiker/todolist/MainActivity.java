@@ -54,16 +54,14 @@ public class MainActivity extends AppCompatActivity {
     private class onItemClickListener implements AdapterView.OnItemClickListener {
 
         @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int completed, long id) {
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
             CheckBox cb = (CheckBox) findViewById(R.id.checkBox);
-
-
 
             // test toast
             Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_LONG).show();
 
-            db.update(id, completed);
+            db.update(id);
             updateData();
         }
     }
