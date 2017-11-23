@@ -23,8 +23,8 @@ public class TodoDatabase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         sqLiteDatabase.execSQL("create table todos (_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, completed INTEGER);");
-        sqLiteDatabase.execSQL("insert into todos(title, completed) values('testTitle1', 0)");
-        sqLiteDatabase.execSQL("insert into todos(title, completed)values('testTitle2', 1)");
+        sqLiteDatabase.execSQL("insert into todos(title, completed) values('testTitle1', 1)");
+        sqLiteDatabase.execSQL("insert into todos(title, completed)values('testTitle2', 0)");
         sqLiteDatabase.execSQL("insert into todos(title, completed)values('testTitle3', 1)");
 
     }
@@ -57,8 +57,28 @@ public class TodoDatabase extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         // put values
-        cv.put(title, completed);
+        cv.put( "title" , title);
+        cv.put("completed", completed);
         db.insert("todos", "null", cv);
+    }
+
+    // Step 7
+    //1.  accepts long id, updated scompleted status
+
+    public  void update(long id, int completed) {
+        // 2. get reference to writable database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // 3. Content values that contain a new value for completed.
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("completed", completed);
+        db.update("todos", contentValues, "_id= "+ id, null);
+    }
+
+    // Step 8
+    public  void delete(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.delete("todos", "_id= "+id, null);
     }
 
 }

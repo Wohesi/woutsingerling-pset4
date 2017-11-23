@@ -26,7 +26,7 @@ public class TodoAdapter extends ResourceCursorAdapter {
 
         // set checkbox to completed
         CheckBox complete = view.findViewById(R.id.checkBox);
-        complete.setChecked(cursor.getInt(cursor.getColumnIndex("completed")) == 0 );
+        complete.setChecked(cursor.getInt(cursor.getColumnIndex("completed")) == 1 );
     }
 }
 
